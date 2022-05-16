@@ -1,14 +1,10 @@
 pipeline {
 	// agent  any
-	agent { 
-		docker { 
-		image 'python:3.8'
-		} 
-	}
+	agent { docker { image 'node:14.8'} }
 	stages{
-		stage('Build'){
+		stage('Build') {
 			steps{
-				sh 'mvn --version' // script shell
+				sh 'node --version' // script shell
 				echo "Build"
 			}
 		}
