@@ -13,16 +13,16 @@ pipeline {
 		}
 		stage("Test d'intégration"){
 			steps{
-				echo "Test d'intégration"
+				echo "Test d'integration"
 			}
 		}
 	}
 	post{
 		always{
-			echo "Je suis génial. Je fonctionne toujours!"
+			echo "Je suis genial. Je fonctionne toujours!"
 		}
 		success{
-			echo "Je fonctionne quant tu réussi!"
+			echo "Je fonctionne quant tu reussi!"
 		}
 		failure {
 			echo "Je fonctionnne quand tu échoue!"
