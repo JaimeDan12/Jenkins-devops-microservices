@@ -1,10 +1,16 @@
 pipeline {
 	// agent  any
-	agent { docker { image 'maven:3.8.5'} }
+	// agent { docker { image 'maven:3.8.5'} }
+	agent {
+    docker {
+        label 'docker'
+        image 'python:3.7'
+    }
+}
 	stages{
 		stage('Build'){
 			steps{
-				sh 'mvn --version' // script shell
+				sh 'py --version' // script shell
 				echo "Build"
 			}
 		}
