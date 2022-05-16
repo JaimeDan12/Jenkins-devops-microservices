@@ -17,5 +17,16 @@ pipeline {
 			}
 		}
 	}
+	post{
+		always{
+			echo "Je suis génial. Je fonctionne toujours!"
+		}
+		success{
+			echo "Je fonctionne quant tu réussi!"
+		}
+		failure {
+			echo "Je fonctionnne quand tu échoue!"
+		}
+	}
 
 }
