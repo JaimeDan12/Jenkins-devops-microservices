@@ -27,7 +27,7 @@ pipeline {
 			echo "Je fonctionne quant tu reussi!"
 		}
 		failure {
-			echo "Je fonctionnne quand tu échoue!"
+			echo "Je Suis là quand tu echoue!"
 		}
 	}
 
