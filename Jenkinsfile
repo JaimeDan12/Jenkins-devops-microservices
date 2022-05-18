@@ -11,7 +11,7 @@ pipeline {
 	stages{
 		stage('Checkout') {
 			steps{
-				bat "mvn --version"
+				// bat "mvn --version"
 				bat 'node --version' // script shell
                 bat 'docker version'
 				echo "Build"
