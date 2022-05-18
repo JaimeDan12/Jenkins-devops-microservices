@@ -4,12 +4,14 @@ pipeline {
 
     environment{
         dockerHome= tool 'Mydocker'
+		mavenHome= tool 'MyMaven'
         nodeHome= tool 'MyNode'
-        PATH="$dockerHome/bin:$nodeHome/bin:$PATH"
+        PATH="$dockerHome/bin:$nodeHome/bin:$mavenHome/bin:$PATH"
     }
 	stages{
 		stage('Checkout') {
 			steps{
+				bat 'mvn -version'
 				bat 'node --version' // script shell
                 bat 'docker version'
 				echo "Build"
@@ -24,17 +26,17 @@ pipeline {
 		}
 		stage('Build'){
 			steps{
-				echo "Test "
+				bat 'mvn clean complie'
 			}
 		}
 		stage('Test'){
 			steps{
-				echo "Test "
+				bat 'mvn test'
 			}
 		}
 		stage("Test d'intégration"){
 			steps{
-				echo "Test d'integration"
+				bat 'mvn failsafe:integration-test failsafe:verify '
 			}
 		}
 	}
