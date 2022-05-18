@@ -24,17 +24,17 @@ pipeline {
 		}
 		stage('Build'){
 			steps{
-				bat 'npm install -g @vue/cli'
+				echo 'Build'
 			}
 		}
 		stage('Test'){
 			steps{
-				bat 'vue --version'
+				echo 'Test'
 			}
 		}
-		stage("Test d'intégration"){
+		stage("Test intégration"){
 			steps{
-				echo "Test d'integration"
+				echo "Test integration"
 			}
 		}
 	}
@@ -46,7 +46,7 @@ pipeline {
 			echo "Je fonctionne quant tu reussi!"
 		}
 		failure {
-			echo "Je Suis là quand tu echoue!"
+			echo "Je suis ici quand tu echoue!"
 		}
 	}
 }
