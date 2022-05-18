@@ -4,13 +4,13 @@ pipeline {
 
     environment{
         dockerHome= tool 'Mydocker'
-        mavenHome= tool 'MyMaven'
-        PATH="$dockerHome/bin:$mavenHome/bin:$PATH"
+        nodeHome= tool 'MyNode'
+        PATH="$dockerHome/bin:$ nodeHome/bin:$PATH"
     }
 	stages{
-		stage('Build') {
+		stage('Checkout') {
 			steps{
-				// bat 'mvn --version' // script shell
+				bat 'node --version' // script shell
                 bat 'docker version'
 				echo "Build"
                 echo "$PATH"
@@ -20,6 +20,11 @@ pipeline {
                 echo "JOB_NAME -$env.jOB_NAME"
                 echo "BUILDER_URL -$env.BUILD_URL"
 
+			}
+		}
+		stage('Build'){
+			steps{
+				echo "Test "
 			}
 		}
 		stage('Test'){
