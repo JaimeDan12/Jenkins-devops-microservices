@@ -37,6 +37,23 @@ pipeline {
 				echo "Test integration"
 			}
 		}
+		stage('Build Docker Image'){
+			steps{
+				script{
+					dockerImage = docker.Build("danjaime/currency-exchange-devops/general:${env.BUILD_TAG}")
+				}
+			}
+		}
+		stage('Push Docker Image'){
+			steps{
+				script{
+					docker.withRegistry('','dockerhub'){
+						dockerImage.Push()
+						dockerImage.Push('latest')
+					}
+				}
+			}
+		}
 	}
 	post{
 		always{
