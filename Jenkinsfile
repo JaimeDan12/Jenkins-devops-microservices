@@ -4,14 +4,12 @@ pipeline {
 
     environment{
         dockerHome= tool 'Mydocker'
-		mavenHome= tool 'MyMaven'
         nodeHome= tool 'MyNode'
-        PATH="$dockerHome/bin:$nodeHome/bin:$mavenHome/bin:$PATH"
+        PATH="$dockerHome/bin:$nodeHome/bin:$PATH"
     }
 	stages{
 		stage('Checkout') {
 			steps{
-				// bat "mvn --version"
 				bat 'node --version' // script shell
                 bat 'docker version'
 				echo "Build"
@@ -26,17 +24,17 @@ pipeline {
 		}
 		stage('Build'){
 			steps{
-				bat 'mvn clean compile'
+				bat 'npm install -g @vue/cli'
 			}
 		}
 		stage('Test'){
 			steps{
-				bat 'mvn test'
+				bat 'vue --version'
 			}
 		}
 		stage("Test d'intégration"){
 			steps{
-				bat 'mvn failsafe:integration-test failsafe:verify '
+				echo "Test d'integration"
 			}
 		}
 	}
