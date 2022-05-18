@@ -5,7 +5,7 @@ pipeline {
     environment{
         dockerHome= tool 'Mydocker'
         nodeHome= tool 'MyNode'
-        PATH="$dockerHome/bin:$ nodeHome/bin:$PATH"
+        PATH="$dockerHome/bin:$nodeHome/bin:$PATH"
     }
 	stages{
 		stage('Checkout') {
